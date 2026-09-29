@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 class Program
 {
@@ -31,8 +31,19 @@ class Program
             Console.WriteLine("2. Tecnico");
             Console.WriteLine("3. Profesional");
 
-            Console.Write("Digite el tipo de empleado: ");
-            tipoEmpleado = int.Parse(Console.ReadLine());
+            // Ciclo para validar el tipo de empleado
+            do
+            {
+                Console.Write("Digite el tipo de empleado (1-3): ");
+
+                if (!int.TryParse(Console.ReadLine(), out tipoEmpleado)
+                    || tipoEmpleado < 1 || tipoEmpleado > 3)
+                {
+                    Console.WriteLine("Tipo de empleado incorrecto. Digite 1, 2 o 3.");
+                    tipoEmpleado = 0;
+                }
+
+            } while (tipoEmpleado == 0);
 
             Console.Write("Digite las horas trabajadas: ");
             horas = double.Parse(Console.ReadLine());
